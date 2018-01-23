@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{item.name}}</title>
+</style>
+</head>
+<body>
+
+	<h1>{{item.name}}</h1>
+	
+	<p>Description: {{item.description}}</p>		
+
+	{% if 'username' in session %}
+	<p>
+		<a href="{{url_for('edit_item', category_name=item.category.name,
+			item_name=item.name)}}">Edit</a> |
+
+		<a href="{{url_for('delete_item', category_name=item.category.name,
+			item_name=item.name)}}">Delete</a>
+	</p>
+	{% endif %}
+
+	<p>
+	<a href="{{url_for('show_catalog')}}">Back</a>
+	</p>
+
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Edit Item</h1>
+	
+	<form action="{{url_for('edit_item', category_name=item.category.name,
+		item_name=item.name)}}" method='POST'>
+		
+		<p>Name</p>
+		<input type='text' size='100' name='name' 
+			value="{{item.name}}">
+
+		<p>Description</p>
+		<input type='text' size='100' name='description' 
+			value="{{item.description}}">
+
+		<p>Category</p>		
+		<select name="category">
+			{% for c in categories %}
+				{% if c.name==item.category.name %}
+
+  					<option value="{{c.name}}" selected>{{c.name}}</option>
+  				{% else %}
+  					<option value="{{c.name}}">{{c.name}}</option>
+				{% endif %}
+
+
+			{% endfor %}
+		</select>
+
+		<p><input type='submit' value='Submit'></p>
+	</form>
+
+	<p> <a href="{{url_for('show_item_description', 
+			category_name=item.category.name, item_name=item.name)}}">Cancel</a></p>
+</body>
+</html>
