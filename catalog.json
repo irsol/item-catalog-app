@@ -1,0 +1,185 @@
+{
+  "Category": [
+    {
+      "Item": [
+        {
+          "description": "Barcelona, the cosmopolitan capital of Spain\u2019s  Catalonia region, is known for its art and architecture. From Wikipedia.", 
+          "id": 1, 
+          "name": "Barcelona"
+        }, 
+        {
+          "description": "City Bilbao", 
+          "id": 2, 
+          "name": "Bilbao"
+        }, 
+        {
+          "description": "City Malaga", 
+          "id": 3, 
+          "name": "Malaga"
+        }
+      ], 
+      "description": "Spain, a country on Europe\u2019s Iberian\n                   Peninsula includes 17 autonomous regions with diverse\n                   geography and cultures", 
+      "id": 1, 
+      "name": "Spain"
+    }, 
+    {
+      "Item": [
+        {
+          "description": "City Milan", 
+          "id": 4, 
+          "name": "Milan"
+        }, 
+        {
+          "description": "City Rome", 
+          "id": 5, 
+          "name": "Rome"
+        }, 
+        {
+          "description": "City Venice", 
+          "id": 6, 
+          "name": "Venice"
+        }
+      ], 
+      "description": "Country Italy", 
+      "id": 2, 
+      "name": "Italy"
+    }, 
+    {
+      "Item": [
+        {
+          "description": "City Zadar", 
+          "id": 7, 
+          "name": "Zadar"
+        }, 
+        {
+          "description": "City Dubrovnik", 
+          "id": 8, 
+          "name": "Dubrovnik"
+        }, 
+        {
+          "description": "City Omis", 
+          "id": 9, 
+          "name": "Omis"
+        }
+      ], 
+      "description": "Country Croatia", 
+      "id": 3, 
+      "name": "Croatia"
+    }, 
+    {
+      "Item": [
+        {
+          "description": "City Lisbon", 
+          "id": 10, 
+          "name": "Lisbon"
+        }, 
+        {
+          "description": "City Albufeira", 
+          "id": 11, 
+          "name": "Albufeira"
+        }, 
+        {
+          "description": "City Porto", 
+          "id": 12, 
+          "name": "Porto"
+        }
+      ], 
+      "description": "Country Portugal", 
+      "id": 4, 
+      "name": "Portugal"
+    }, 
+    {
+      "Item": [
+        {
+          "description": "City Paris", 
+          "id": 13, 
+          "name": "Paris"
+        }, 
+        {
+          "description": "City Bordeaux", 
+          "id": 14, 
+          "name": "Bordeaux"
+        }, 
+        {
+          "description": "City Marseille", 
+          "id": 15, 
+          "name": "Marseille"
+        }, 
+        {
+          "description": "City Biarritz", 
+          "id": 16, 
+          "name": "Biarritz"
+        }
+      ], 
+      "description": "Country France", 
+      "id": 5, 
+      "name": "France"
+    }, 
+    {
+      "Item": [
+        {
+          "description": "City Amsterdam", 
+          "id": 17, 
+          "name": "Amsterdam"
+        }, 
+        {
+          "description": "City Rotterdam", 
+          "id": 18, 
+          "name": "Rotterdam"
+        }, 
+        {
+          "description": "City The Hague", 
+          "id": 19, 
+          "name": "The Hague"
+        }
+      ], 
+      "description": "Country Netherlands", 
+      "id": 6, 
+      "name": "Netherlands"
+    }, 
+    {
+      "Item": [
+        {
+          "description": "City Krakow", 
+          "id": 20, 
+          "name": "Krakow"
+        }, 
+        {
+          "description": "City Warsaw", 
+          "id": 21, 
+          "name": "Warsaw"
+        }, 
+        {
+          "description": "City Lublin", 
+          "id": 22, 
+          "name": "Lublin"
+        }
+      ], 
+      "description": "Country Poland", 
+      "id": 7, 
+      "name": "Poland"
+    }, 
+    {
+      "Item": [
+        {
+          "description": "City Berlin", 
+          "id": 23, 
+          "name": "Berlin"
+        }, 
+        {
+          "description": "City Frankfurt", 
+          "id": 24, 
+          "name": "Frankfurt"
+        }, 
+        {
+          "description": "City Hamburg", 
+          "id": 25, 
+          "name": "Hamburg"
+        }
+      ], 
+      "description": "Country Germany", 
+      "id": 8, 
+      "name": "Germany"
+    }
+  ]
+}
