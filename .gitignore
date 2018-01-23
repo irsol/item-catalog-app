@@ -101,5 +101,4 @@ ENV/
 .mypy_cache/
 
 .vagrant/
-*.db
 client_secrets.json
