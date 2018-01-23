@@ -20,11 +20,8 @@ country = Category(name="Spain",
 session.add(country)
 session.commit()
 
-city = Item(name="Barcelona",
-            description="City Barcelona",
-
-            category=country,
-            user=user)
+city = Item(name="Barcelona", description="City Barcelona",
+            category=country, user=user)
 session.add(city)
 session.commit()
 
