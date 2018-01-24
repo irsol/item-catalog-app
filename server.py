@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import string
 import random
+from functools import wraps
 from flask import Flask, render_template, request, redirect
 from flask import url_for, jsonify
 from flask import session as login_session
@@ -11,6 +12,16 @@ from auth import google_connect, google_disconnect
 # Create an instance of the class Flask
 # with the name of the running app as the argument '__name__'
 app = Flask(__name__)
+
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'username' in login_session:
+            return f(*args, **kwargs)
+        else:
+            return redirect('/login')
+    return decorated_function
 
 
 # Create a state token to prevent request forgery
@@ -88,10 +99,8 @@ def show_item_description(category_name, item_name):
 # Edit an item
 @app.route('/catalog/<category_name>/<item_name>/edit',
            methods=['GET', 'POST'])
+@login_required
 def edit_item(category_name, item_name):
-    if 'username' not in login_session:
-        return redirect('/login')
-
     category = session.query(Category).filter_by(name=category_name).one()
     edited_item = session.query(Item).filter_by(name=item_name,
                                                 category_id=category.id).one()
@@ -120,10 +129,8 @@ def edit_item(category_name, item_name):
 # Delete item
 @app.route('/catalog/<category_name>/<item_name>/delete',
            methods=['GET', 'POST'])
+@login_required
 def delete_item(category_name, item_name):
-    if 'username' not in login_session:
-        return redirect('/login')
-
     category = session.query(Category).filter_by(name=category_name).one()
     item_to_delete = session.query(Item).filter_by(name=item_name,
                                                    category=category).one()
@@ -139,10 +146,8 @@ def delete_item(category_name, item_name):
 
 # Add an item
 @app.route('/catalog/add', methods=['GET', 'POST'])
+@login_required
 def add_item():
-    if 'username' not in login_session:
-        return redirect('/login')
-
     categories = session.query(Category).all()
     if request.method == 'POST':
         new_item = Item(
