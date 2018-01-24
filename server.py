@@ -83,6 +83,16 @@ def catalog_json():
     return jsonify(Category=catalog)
 
 
+@app.route('/catalog/<category_name>/<item_name>.json')
+def item_json(category_name, item_name):
+    category = session.query(Category).filter_by(name=category_name).one()
+    item = session.query(Item).filter_by(category_id=category.id,
+                                         name=item_name).one()
+    result = {}
+    result['Item'] = item.serialize
+    return jsonify(result)
+
+
 # Show category with items
 @app.route('/catalog/<category_name>/items/')
 def show_category(category_name):
