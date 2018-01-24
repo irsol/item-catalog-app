@@ -32,7 +32,7 @@ def get_user_info(user_id):
     """ Returns user object assoccieted with id number,
         if user id passed into the method
     """
-    user = session.query(User).filter_by(id=user_id).one()
+    user = session.query(User).filter_by(id=user_id).one_or_none()
     return user
 
 

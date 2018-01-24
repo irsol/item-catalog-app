@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 import string
 import random
+import json
 from functools import wraps
 from flask import Flask, render_template, request, redirect
-from flask import url_for, jsonify
+from flask import url_for, jsonify, flash
 from flask import session as login_session
+from flask import make_response
 from database_setup import Category, Item
 from database_setup import session
-from auth import google_connect, google_disconnect
+from auth import google_connect, google_disconnect, get_user_id
 
 # Create an instance of the class Flask
 # with the name of the running app as the argument '__name__'
@@ -17,9 +19,12 @@ app = Flask(__name__)
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        # Authenticaltion - check if user is logged-in
         if 'username' in login_session:
             return f(*args, **kwargs)
         else:
+            flash("You are not allowed to access there")
+
             return redirect('/login')
     return decorated_function
 
@@ -105,6 +110,15 @@ def edit_item(category_name, item_name):
     edited_item = session.query(Item).filter_by(name=item_name,
                                                 category_id=category.id).one()
 
+    # Authorisation - check if current user can edit the item
+    # Only a user who created an item can edit/delete it
+    user_id = get_user_id(login_session['email'])
+    if edited_item.user_id != user_id:
+        message = json.dumps('You are not allowed to edit the item')
+        response = make_response(message, 403)
+        response.headers['Content-Type'] = 'application/json'
+        return response
+
     # Post method
     if request.method == 'POST':
         if request.form['name']:
@@ -134,6 +148,16 @@ def delete_item(category_name, item_name):
     category = session.query(Category).filter_by(name=category_name).one()
     item_to_delete = session.query(Item).filter_by(name=item_name,
                                                    category=category).one()
+
+    # Authorisation - check if current user can edit the item
+    # Only a user who created an item can edit/delete it
+    user_id = get_user_id(login_session['email'])
+    if item_to_delete.user_id != user_id:
+        message = json.dumps('You are not allowed to delete the item')
+        response = make_response(message, 403)
+        response.headers['Content-Type'] = 'application/json'
+        return response
+
     if request.method == 'POST':
         session.delete(item_to_delete)
         session.commit()
