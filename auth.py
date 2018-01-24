@@ -163,13 +163,17 @@ def google_disconnect():
 
     print('result is ')
     print(result)
+
+    # Reset users session since otherwise it won't be possible to
+    # logout and login
+    del login_session['access_token']
+    del login_session['gplus_id']
+    del login_session['username']
+    del login_session['email']
+    del login_session['picture']
+
     if result.status_code == 200:
         # Reset the user's session
-        del login_session['access_token']
-        del login_session['gplus_id']
-        del login_session['username']
-        del login_session['email']
-        del login_session['picture']
         response = make_response(json.dumps('Successfully disconnected.'), 200)
         response.headers['Content-Type'] = 'application/json'
         return response
